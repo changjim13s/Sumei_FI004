@@ -11,7 +11,7 @@
   <sap:VirtualizedContainerService.HintSize>926.4,1087.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="64">
+    <scg:List x:TypeArguments="x:String" Capacity="33">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -48,7 +48,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="50">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="26">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -74,6 +74,7 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap:VirtualizedContainerService.HintSize="936.8,1022.4" sap2010:WorkflowViewState.IdRef="Flowchart_2">
@@ -225,23 +226,88 @@
                           <av:PointCollection x:Key="ConnectorLocation">410,625.5 410,655.5 420,655.5 420,694.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[GT_HEAD]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[GT_HEAD]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="507.2,1444.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="WA_HEAD" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,604.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="473.6,1324.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="sd:DataTable" Name="lt_item" />
                                 <Variable x:TypeArguments="x:Int32" Name="SWITCH_FLAG" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="LV_HEAD" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="LT_GL" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="LT_OTHERS" />
                               </Sequence.Variables>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                              <ui:MultipleAssign sap2010:Annotation.AnnotationText="表頭(過帳碼31)&#xD;&#xA;總帳快速輸入項目(不含稅)&#xD;&#xA;其他項目" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="432,221.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                                <ui:MultipleAssign.AssignOperations>
+                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="sd:DataTable">[LV_HEAD]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[GT_DATA.Select("[NEWBS] = '31' and [BKTXT] = '"+WA_HEAD(0).ToString+"' "  ).CopyToDataTable]</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="sd:DataTable">[LT_GL]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[GT_DATA.Select("[NEWBS] = '40' and [BKTXT] = '"+WA_HEAD(0).ToString+"' and ( [KOSTL] &lt;&gt; '' OR [KOSTL] IS NOT NULL  ) "  ).CopyToDataTable]</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="sd:DataTable">[LT_OTHERS]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[GT_DATA.Select(" [NEWBS] &lt;&gt; '31' AND [BKTXT] = '"+WA_HEAD(0).ToString+"' and ( [KOSTL] = ''  OR [KOSTL] IS NULL )"  ).CopyToDataTable]</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                  </scg:List>
+                                </ui:MultipleAssign.AssignOperations>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:MultipleAssign>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke INPUT_HEAD_DATA workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="INPUT_HEAD_DATA.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">
+                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="lv_head" />
+                                  </InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke INPUT_OTHERS_DATA workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="INPUT_OTHERS_DATA.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LT_OTHERS">
+                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="LT_OTHERS" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">
+                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="LV_HEAD" />
+                                  </InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke INPUT_GL_DATA workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="INPUT_GL_DATA.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">
+                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="LV_HEAD" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LT_GL">
+                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="LT_GL" />
+                                  </InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                              <Assign sap:VirtualizedContainerService.HintSize="432,60" sap2010:WorkflowViewState.IdRef="Assign_1">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="sd:DataTable">[lt_item]</OutArgument>
                                 </Assign.To>
@@ -249,7 +315,7 @@
                                   <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[GT_DATA.Select("[BKTXT] = '"+WA_HEAD(0).ToString+"' "  ).CopyToDataTable]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <Sequence DisplayName="COUNT_SWITCH_FLAG" sap:VirtualizedContainerService.HintSize="333.6,67.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                              <Sequence DisplayName="COUNT_SWITCH_FLAG" sap:VirtualizedContainerService.HintSize="432,67.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="sd:DataTable" Name="LV_TEMP" />
                                   <Variable x:TypeArguments="sd:DataTable" Name="LV_GUI_IND" />
@@ -373,7 +439,7 @@
                                   </ui:IfElseIf.ConditionBlocks>
                                 </ui:IfElseIf>
                               </Sequence>
-                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                              <Assign sap:VirtualizedContainerService.HintSize="432,60" sap2010:WorkflowViewState.IdRef="Assign_6">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[LV_BKTXT]</OutArgument>
                                 </Assign.To>
@@ -381,7 +447,7 @@
                                   <InArgument x:TypeArguments="x:String">[WA_HEAD(0).ToString]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[SWITCH_FLAG]" sap:VirtualizedContainerService.HintSize="500,632.8" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                              <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[SWITCH_FLAG]" sap:VirtualizedContainerService.HintSize="432,52" sap2010:WorkflowViewState.IdRef="Switch`1_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -437,7 +503,7 @@
                                 </ui:InvokeWorkflowFile>
                                 <WriteLine x:Key="0" sap:VirtualizedContainerService.HintSize="230.4,61.6" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[LV_BKTXT+&quot;找不到符合執行條件的Process&quot;]" />
                               </Switch>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UPDATE_DB workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="UPDATE_DB.xaml">
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UPDATE_DB workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="UPDATE_DB.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InArgument x:TypeArguments="x:String" x:Key="DATA_SOURCE">[DATA_SOURCE]</InArgument>
                                   <InArgument x:TypeArguments="x:String" x:Key="DB_NAME">[DB_NAME]</InArgument>
@@ -517,13 +583,15 @@
     <FlowStep>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">0,284.38</av:Point>
+          <av:Point x:Key="ShapeLocation">30,134.38</av:Point>
           <av:Size x:Key="ShapeSize">200,52</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TEST workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="TEST.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GUI_INVNO workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="GUI_INVNO.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          <InOutArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">
+            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="LV_BKTXT" />
+          </InOutArgument>
         </ui:InvokeWorkflowFile.Arguments>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
