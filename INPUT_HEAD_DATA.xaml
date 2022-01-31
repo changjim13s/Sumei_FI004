@@ -82,7 +82,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ucas:CallTransaction DisplayName="Call Transaction 'saplogon.exe  SAP 輕鬆存取'" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CallTransaction_1" Transaction="F-43">
+    <ucas:CallTransaction DisplayName="登入F-43" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CallTransaction_1" Transaction="F-43">
       <ucas:CallTransaction.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6693db30-8498-49ea-8f60-6a76be6813f7" InformativeScreenshot="c681a9580963131f1357c1024c43a44b" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='SAP 輕鬆存取' /&gt;">
           <ui:Target.TimeoutMS>
