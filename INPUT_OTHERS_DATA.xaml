@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>822.4,1089.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>816,611.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>INPUT_OTHERS_DATA_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -73,7 +73,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="INPUT_OTHERS_DATA" sap:VirtualizedContainerService.HintSize="241.6,360" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="INPUT_OTHERS_DATA" sap:VirtualizedContainerService.HintSize="375.2,468.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="IND_WA" />
     </Sequence.Variables>
@@ -82,7 +82,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="333.6,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,596" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
@@ -189,7 +189,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <If sap2010:Annotation.AnnotationText="稅項input" Condition="[LT_OTHERS.RowCount &gt; 0]" sap:VirtualizedContainerService.HintSize="200,83.2" sap2010:WorkflowViewState.IdRef="If_2">
+    <If sap2010:Annotation.AnnotationText="稅項input" Condition="[LT_OTHERS.RowCount &gt; 0]" sap:VirtualizedContainerService.HintSize="333.6,83.2" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -331,9 +331,9 @@
         </Sequence>
       </If.Else>
     </If>
-    <ucas:ClickToolbarButton ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" AlterIfDisabled="True" DisplayName="點擊「總帳快速輸入」" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="ClickToolbarButton_1" Item="呼叫快速輸入   (Shift+F8)">
+    <ucas:ClickToolbarButton ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" AlterIfDisabled="True" DisplayName="點擊「總帳快速輸入」" sap:VirtualizedContainerService.HintSize="333.6,160.8" sap2010:WorkflowViewState.IdRef="ClickToolbarButton_1" Item="呼叫快速輸入   (Shift+F8)">
       <ucas:ClickToolbarButton.Items>
-        <scg:List x:TypeArguments="x:String" Capacity="8">
+        <scg:List x:TypeArguments="x:String" Capacity="16">
           <x:String xml:space="preserve">顯示文件概觀   (Shift+F2)</x:String>
           <x:String xml:space="preserve">上一個項目   (Shift+F6)</x:String>
           <x:String xml:space="preserve">下一個項目   (Shift+F7)</x:String>
@@ -342,10 +342,11 @@
           <x:String xml:space="preserve">選擇科目指派範本   (F6)</x:String>
           <x:String xml:space="preserve">呼叫快速輸入   (Shift+F8)</x:String>
           <x:String xml:space="preserve">輸入\/顯示稅項   (F5)</x:String>
+          <x:String xml:space="preserve">輸入\/顯示扣繳稅額資料   (Ctrl+F5)</x:String>
         </scg:List>
       </ucas:ClickToolbarButton.Items>
       <ucas:ClickToolbarButton.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6c9474ac-08a6-43f6-90ba-154bc07f0a99" InformativeScreenshot="91aeabc318ab8a66e83fe2202ffee116" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;&lt;sap id='tbar[1]/btn[20]' /&gt;" TimeoutMS="1000">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6c9474ac-08a6-43f6-90ba-154bc07f0a99" InformativeScreenshot="9a451b1cdde4d7a0ac275cac1d4340fd" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='輸入 BPM費用請款-外掛(SM): 新增 供應商項目' /&gt;&lt;sap id='tbar[1]/btn[20]' /&gt;" TimeoutMS="1000">
           <ui:Target.WaitForReady>
             <InArgument x:TypeArguments="ui:WaitForReady" />
           </ui:Target.WaitForReady>
@@ -353,7 +354,7 @@
       </ucas:ClickToolbarButton.Target>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>

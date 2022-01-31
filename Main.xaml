@@ -245,7 +245,7 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:MultipleAssign sap2010:Annotation.AnnotationText="表頭(過帳碼31)&#xD;&#xA;總帳快速輸入項目(不含稅)&#xD;&#xA;其他項目" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="432,221.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                              <ui:MultipleAssign sap2010:Annotation.AnnotationText="表頭(過帳碼31)&#xA;總帳快速輸入項目(不含稅)&#xA;其他項目" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="432,221.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                                 <ui:MultipleAssign.AssignOperations>
                                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -282,26 +282,20 @@
                               </ui:MultipleAssign>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke INPUT_HEAD_DATA workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="INPUT_HEAD_DATA.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">
-                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="lv_head" />
-                                  </InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">[lv_head]</InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke INPUT_OTHERS_DATA workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="INPUT_OTHERS_DATA.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LT_OTHERS">
-                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="LT_OTHERS" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">
-                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="LV_HEAD" />
-                                  </InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LT_OTHERS">[LT_OTHERS]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">[LV_HEAD]</InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke INPUT_GL_DATA workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="INPUT_GL_DATA.xaml">
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GUI_INVNO workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="GUI_INVNO.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">
-                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="LV_HEAD" />
-                                  </InArgument>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">
+                                    <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="LV_BKTXT" />
+                                  </InOutArgument>
                                   <InArgument x:TypeArguments="sd:DataTable" x:Key="LT_GL">
                                     <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="LT_GL" />
                                   </InArgument>
@@ -589,9 +583,7 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GUI_INVNO workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="GUI_INVNO.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InOutArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">
-            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="LV_BKTXT" />
-          </InOutArgument>
+          <InOutArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">[LV_BKTXT]</InOutArgument>
         </ui:InvokeWorkflowFile.Arguments>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
