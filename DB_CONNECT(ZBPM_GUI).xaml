@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>814.4,611.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>818.4,611.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>testdb_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="39">
@@ -91,7 +91,6 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="testdb" sap:VirtualizedContainerService.HintSize="478.4,387.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -106,7 +105,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="624.8,641.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="436.8,294.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <Sequence DisplayName="連接DB抓取資料" sap:VirtualizedContainerService.HintSize="200,67.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <Sequence.Variables>
@@ -119,7 +118,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="483.2,226.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="432,226.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -165,7 +164,7 @@
               </scg:List>
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
-          <ui:DatabaseConnect DisplayName="Connect" sap:VirtualizedContainerService.HintSize="483.2,52" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.SqlClient" ConnectionString="[conn_str2]" DatabaseConnection="[dbconn2]">
+          <ui:DatabaseConnect DisplayName="Connect" sap:VirtualizedContainerService.HintSize="432,52" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.SqlClient" ConnectionString="[conn_str2]" DatabaseConnection="[dbconn2]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -173,7 +172,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:DatabaseConnect>
-          <ui:ExecuteQuery ContinueOnError="{x:Null}" CommandType="Text" DataTable="[LT_GUIS]" DisplayName="Execute Query" ExistingDbConnection="[dbconn2]" sap:VirtualizedContainerService.HintSize="483.2,89.6" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;SELECT TOP (100)  * FROM [&quot;+DB_NAME+&quot;].[dbo].[ZBPM_GUI]  where MANDT = '&quot;+CLIENT+&quot;' AND BPMPONO = 'BPM請款單號06' &quot;]" TimeoutMS="2000">
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" CommandType="Text" DataTable="[LT_GUIS]" DisplayName="Execute Query" ExistingDbConnection="[dbconn2]" sap:VirtualizedContainerService.HintSize="432,89.6" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;SELECT TOP (100)  * FROM [&quot;+DB_NAME+&quot;].[dbo].[ZBPM_GUI]  where MANDT = '&quot;+CLIENT+&quot;' AND BPMPONO = 'BPM請款單號06' &quot;]" TimeoutMS="2000">
             <ui:ExecuteQuery.Parameters>
               <scg:Dictionary x:TypeArguments="x:String, Argument" />
             </ui:ExecuteQuery.Parameters>
@@ -184,33 +183,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ExecuteQuery>
-          <If Condition="[LT_GUIS.RowCount &gt; 0]" sap:VirtualizedContainerService.HintSize="483.2,279.2" sap2010:WorkflowViewState.IdRef="If_2">
-            <If.Then>
-              <Assign sap2010:Annotation.AnnotationText="執行的BPM單號" sap:VirtualizedContainerService.HintSize="263.2,91.2" sap2010:WorkflowViewState.IdRef="Assign_2">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[LV_BKTXT]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[LT_GUIS.Rows(0).Item("BPMPONO").ToString]</InArgument>
-                </Assign.Value>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </Assign>
-            </If.Then>
-            <If.Else>
-              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_15">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </Sequence>
-            </If.Else>
-          </If>
-          <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="INVNO" DataTable="[LT_GUIS]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="483.2,52" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[LT_GUIS]" SortOrder="Ascending">
+          <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="INVNO" DataTable="[LT_GUIS]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="432,52" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[LT_GUIS]" SortOrder="Ascending">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -218,11 +191,11 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:SortDataTable>
-          <ui:DatabaseDisconnect DatabaseConnection="[dbconn2]" DisplayName="Disconnect" sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
+          <ui:DatabaseDisconnect DatabaseConnection="[dbconn2]" DisplayName="Disconnect" sap:VirtualizedContainerService.HintSize="432,22.4" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="591.2,21.6" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,21.6" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>

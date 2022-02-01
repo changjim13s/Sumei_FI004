@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="INPUT_OTHERS_DATA" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ucas="clr-namespace:UiPath.Core.Activities.SAP;assembly=UiPath.UiAutomation.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="INPUT_OTHERS_DATA" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="LT_OTHERS" Type="InArgument(sd:DataTable)" />
     <x:Property Name="LV_HEAD" Type="InArgument(sd:DataTable)" />
@@ -6,10 +6,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>816,611.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>818.4,2585.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>INPUT_OTHERS_DATA_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="60">
+    <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -41,6 +41,7 @@
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>UiPath.Core.Activities.SAP</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -71,9 +72,10 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="INPUT_OTHERS_DATA" sap:VirtualizedContainerService.HintSize="375.2,468.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="INPUT_OTHERS_DATA" sap:VirtualizedContainerService.HintSize="567.2,2328.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="IND_WA" />
     </Sequence.Variables>
@@ -82,9 +84,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="333.6,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="525.6,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,596" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,762.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -189,175 +191,283 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <If sap2010:Annotation.AnnotationText="稅項input" Condition="[LT_OTHERS.RowCount &gt; 0]" sap:VirtualizedContainerService.HintSize="333.6,83.2" sap2010:WorkflowViewState.IdRef="If_2">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="其餘項(含稅項輸入)" DataTable="[LT_OTHERS]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="525.6,2144" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="WA_OTHER" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="492,1992.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="LV_NEWBS" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:IfElseIf sap2010:Annotation.AnnotationText="過帳碼40+無特殊總帳 =稅項&#xD;&#xA;過帳碼29+特殊總帳T =暫付款&#xD;&#xA;過帳碼29+特殊總帳A =單邊分路 預付款" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="450.4,1900" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+              <ui:IfElseIf.ConditionBlocks>
+                <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                  <ui:IfElseIfBlock BlockType="If" Condition="[wa_other.Item(&quot;NEWBS&quot;).ToString = &quot;40&quot; And string.IsNullOrEmpty(WA_OTHER.Item(&quot;NEWUM&quot;).ToString)]">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="稅項" sap:VirtualizedContainerService.HintSize="375.2,1462.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="Type Into 'CTextField  過帳碼'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_22" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;NEWBS&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3a2bcfdf-81e0-4e02-af35-9a7108b606f1" InformativeScreenshot="1c7eb678fc0f6a37a1a9d0cfbc391f0e" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='輸入 BPM費用請款-外掛(SM): 新增 供應商項目' /&gt;&lt;sap id='usr/ctxt[12]' /&gt;" TimeoutMS="1000">
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:TypeInto>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'CTextField  科目'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_23" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;NEWKO&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa8eb8d1-45b8-4558-af51-f308d21a1930" InformativeScreenshot="9f86dfff6681cabd39097b947b3da0f3" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='輸入 BPM費用請款-外掛(SM): 新增 供應商項目' /&gt;&lt;sap id='usr/ctxt[13]' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:TypeInto>
+                        <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" Activate="True" DisplayName="輸入enter" sap:VirtualizedContainerService.HintSize="333.6,143.2" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="enter" KeyModifiers="None" SendWindowMessages="True" SpecialKey="True">
+                          <ui:SendHotkey.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4abf2e13-9fbe-470a-9883-5c794589a194" InformativeScreenshot="13b650b69657e25e2937528e4fd3a9f8" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='輸入 BPM費用請款-外掛(SM): 新增 供應商項目' /&gt;&lt;sap omit:id='usr/ctxt[13]' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:SendHotkey.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:SendHotkey>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="金額" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_25" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;WRBTR&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2071c13a-5695-4210-9956-079d465c7562" InformativeScreenshot="b406537aa5f4e66b6f1df2748f59a286" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/txt[2]' /&gt;" WaitForReady="INTERACTIVE">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'TextField  稅基金額'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_26" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;FWBAS&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="622c528d-8146-4afe-ac3f-98f52bc1c60d" InformativeScreenshot="265b931e9137063906862d4b3195487f" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/txt[4]' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'CTextField  稅碼'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_27" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;MWSKZ&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d6cccec3-3bfa-4f58-be1d-c39139b43a69" InformativeScreenshot="af1a163ede9f14be345b6475426faaf2" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/ctxt[2]' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="指派" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_28" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;XBLNR&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d6cccec3-3bfa-4f58-be1d-c39139b43a69" InformativeScreenshot="d674257db218eeea6341f0859cc21ccc" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/txt[5]' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="內文" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_29" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;SGTXT&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d6cccec3-3bfa-4f58-be1d-c39139b43a69" InformativeScreenshot="b0aaf2bd13fa6b22c0723adf5db8868d" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/ctxt[4]' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="ElseIf" Condition="[wa_other(&quot;NEWBS&quot;).ToString = &quot;29&quot; And WA_OTHER.Item(&quot;NEWUM&quot;).ToString = &quot;T&quot;]">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="暫付款" sap:VirtualizedContainerService.HintSize="200,67.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:Boolean" Name="yn" />
+                          <Variable x:TypeArguments="x:String" Name="ind_msz">
+                            <Variable.Default>
+                              <Literal x:TypeArguments="x:String">8</Literal>
+                            </Variable.Default>
+                          </Variable>
+                          <Variable x:TypeArguments="x:String" Name="ind_acct">
+                            <Variable.Default>
+                              <Literal x:TypeArguments="x:String">9</Literal>
+                            </Variable.Default>
+                          </Variable>
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'CTextField  過帳碼'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_31" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;NEWBS&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3a2bcfdf-81e0-4e02-af35-9a7108b606f1" InformativeScreenshot="2967a484da8d64b25cbd4bc9fb3aa606" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 供應商項目' /&gt;&lt;sap id='usr/ctxt[12]' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:TypeInto>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'CTextField  科目'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_32" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;NEWKO&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa8eb8d1-45b8-4558-af51-f308d21a1930" InformativeScreenshot="9f86dfff6681cabd39097b947b3da0f3" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 供應商項目' /&gt;&lt;sap id='usr/ctxt[13]' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:TypeInto>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="特殊總帳指示碼" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_33" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;NEWUM&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa8eb8d1-45b8-4558-af51-f308d21a1930" InformativeScreenshot="1acef1dd67c03acb8cf3a8674e41cf9f" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;&lt;sap id='usr/ctxt[14]' /&gt;" TimeoutMS="1000">
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:TypeInto>
+                        <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="輸入enter" sap:VirtualizedContainerService.HintSize="333.6,143.2" sap2010:WorkflowViewState.IdRef="SendHotkey_3" Key="enter" KeyModifiers="None" SpecialKey="True">
+                          <ui:SendHotkey.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4abf2e13-9fbe-470a-9883-5c794589a194" InformativeScreenshot="13b650b69657e25e2937528e4fd3a9f8" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 供應商項目' /&gt;&lt;sap id='usr/ctxt[13]' /&gt;" TimeoutMS="1000">
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:SendHotkey.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:SendHotkey>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="金額" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_34" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;WRBTR&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2071c13a-5695-4210-9956-079d465c7562" InformativeScreenshot="8effee286bcd900c2974c4a5f114e572" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;&lt;sap id='usr/txt[6]' /&gt;" TimeoutMS="1000">
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="指派" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_35" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;XBLNR&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d6cccec3-3bfa-4f58-be1d-c39139b43a69" InformativeScreenshot="eaf776be7a48cab133d762ab6c822920" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;&lt;sap id='usr/txt[11]' /&gt;" TimeoutMS="1000">
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="內文" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_36" SendWindowMessages="False" SimulateType="True" Text="[WA_OTHER.Item(&quot;SGTXT&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d6cccec3-3bfa-4f58-be1d-c39139b43a69" InformativeScreenshot="c8acbd491615f327a86d315efbe04e47" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;&lt;sap id='usr/ctxt[5]' /&gt;" TimeoutMS="1000">
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                </sc:BindingList>
+              </ui:IfElseIf.ConditionBlocks>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:IfElseIf>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="375.2,1389.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'CTextField  過帳碼'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_6" SendWindowMessages="False" SimulateType="True" Text="[LT_OTHERS.ROWS(0).Item(&quot;NEWBS&quot;).ToString]">
-            <ui:TypeInto.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3a2bcfdf-81e0-4e02-af35-9a7108b606f1" InformativeScreenshot="2967a484da8d64b25cbd4bc9fb3aa606" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 供應商項目' /&gt;&lt;sap id='usr/ctxt[12]' /&gt;">
-                <ui:Target.TimeoutMS>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:Target.TimeoutMS>
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:TypeInto.Target>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:TypeInto>
-          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'CTextField  科目'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,52" sap2010:WorkflowViewState.IdRef="TypeInto_7" SendWindowMessages="False" SimulateType="True" Text="[LT_OTHERS.ROWS(0).Item(&quot;NEWKO&quot;).ToString]">
-            <ui:TypeInto.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa8eb8d1-45b8-4558-af51-f308d21a1930" InformativeScreenshot="9f86dfff6681cabd39097b947b3da0f3" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 供應商項目' /&gt;&lt;sap id='usr/ctxt[13]' /&gt;">
-                <ui:Target.TimeoutMS>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:Target.TimeoutMS>
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:TypeInto.Target>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:TypeInto>
-          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'CTextField  科目'" sap:VirtualizedContainerService.HintSize="333.6,153.6" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
-            <ui:SendHotkey.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4abf2e13-9fbe-470a-9883-5c794589a194" InformativeScreenshot="13b650b69657e25e2937528e4fd3a9f8" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 供應商項目' /&gt;&lt;sap id='usr/ctxt[13]' /&gt;">
-                <ui:Target.TimeoutMS>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:Target.TimeoutMS>
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:SendHotkey.Target>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:SendHotkey>
-          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'TextField  金額'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_15" SendWindowMessages="False" SimulateType="True" Text="[LT_OTHERS.ROWS(0).Item(&quot;WRBTR&quot;).ToString]">
-            <ui:TypeInto.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2071c13a-5695-4210-9956-079d465c7562" InformativeScreenshot="b406537aa5f4e66b6f1df2748f59a286" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/txt[2]' /&gt;">
-                <ui:Target.TimeoutMS>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:Target.TimeoutMS>
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:TypeInto.Target>
-          </ui:TypeInto>
-          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'TextField  稅基金額'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_16" SendWindowMessages="False" SimulateType="True" Text="[LT_OTHERS.ROWS(0).Item(&quot;FWBAS&quot;).ToString]">
-            <ui:TypeInto.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="622c528d-8146-4afe-ac3f-98f52bc1c60d" InformativeScreenshot="265b931e9137063906862d4b3195487f" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/txt[4]' /&gt;">
-                <ui:Target.TimeoutMS>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:Target.TimeoutMS>
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:TypeInto.Target>
-          </ui:TypeInto>
-          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'CTextField  稅碼'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_17" SendWindowMessages="False" SimulateType="True" Text="[LT_OTHERS.ROWS(0).Item(&quot;MWSKZ&quot;).ToString]">
-            <ui:TypeInto.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d6cccec3-3bfa-4f58-be1d-c39139b43a69" InformativeScreenshot="af1a163ede9f14be345b6475426faaf2" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/ctxt[2]' /&gt;">
-                <ui:Target.TimeoutMS>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:Target.TimeoutMS>
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:TypeInto.Target>
-          </ui:TypeInto>
-          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'CTextField  稅碼'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_18" SendWindowMessages="False" SimulateType="True" Text="[LT_OTHERS.ROWS(0).Item(&quot;XBLNR&quot;).ToString]">
-            <ui:TypeInto.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d6cccec3-3bfa-4f58-be1d-c39139b43a69" InformativeScreenshot="d674257db218eeea6341f0859cc21ccc" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/txt[5]' /&gt;">
-                <ui:Target.TimeoutMS>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:Target.TimeoutMS>
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:TypeInto.Target>
-          </ui:TypeInto>
-          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'CTextField  稅碼'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_19" SendWindowMessages="False" SimulateType="True" Text="[LT_OTHERS.ROWS(0).Item(&quot;SGTXT&quot;).ToString]">
-            <ui:TypeInto.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d6cccec3-3bfa-4f58-be1d-c39139b43a69" InformativeScreenshot="b0aaf2bd13fa6b22c0723adf5db8868d" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/ctxt[4]' /&gt;">
-                <ui:Target.TimeoutMS>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:Target.TimeoutMS>
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:TypeInto.Target>
-          </ui:TypeInto>
-        </Sequence>
-      </If.Then>
-      <If.Else>
-        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </Sequence>
-      </If.Else>
-    </If>
-    <ucas:ClickToolbarButton ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" AlterIfDisabled="True" DisplayName="點擊「總帳快速輸入」" sap:VirtualizedContainerService.HintSize="333.6,160.8" sap2010:WorkflowViewState.IdRef="ClickToolbarButton_1" Item="呼叫快速輸入   (Shift+F8)">
-      <ucas:ClickToolbarButton.Items>
-        <scg:List x:TypeArguments="x:String" Capacity="16">
-          <x:String xml:space="preserve">顯示文件概觀   (Shift+F2)</x:String>
-          <x:String xml:space="preserve">上一個項目   (Shift+F6)</x:String>
-          <x:String xml:space="preserve">下一個項目   (Shift+F7)</x:String>
-          <x:String xml:space="preserve">複製項目   (F9)</x:String>
-          <x:String xml:space="preserve">顯示文件項目的附加資料   (F7)</x:String>
-          <x:String xml:space="preserve">選擇科目指派範本   (F6)</x:String>
-          <x:String xml:space="preserve">呼叫快速輸入   (Shift+F8)</x:String>
-          <x:String xml:space="preserve">輸入\/顯示稅項   (F5)</x:String>
-          <x:String xml:space="preserve">輸入\/顯示扣繳稅額資料   (Ctrl+F5)</x:String>
-        </scg:List>
-      </ucas:ClickToolbarButton.Items>
-      <ucas:ClickToolbarButton.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6c9474ac-08a6-43f6-90ba-154bc07f0a99" InformativeScreenshot="9a451b1cdde4d7a0ac275cac1d4340fd" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='輸入 BPM費用請款-外掛(SM): 新增 供應商項目' /&gt;&lt;sap id='tbar[1]/btn[20]' /&gt;" TimeoutMS="1000">
-          <ui:Target.WaitForReady>
-            <InArgument x:TypeArguments="ui:WaitForReady" />
-          </ui:Target.WaitForReady>
-        </ui:Target>
-      </ucas:ClickToolbarButton.Target>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ucas:ClickToolbarButton>
+    </ui:ForEachRow>
   </Sequence>
 </Activity>

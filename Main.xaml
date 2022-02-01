@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>926.4,1087.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1049.6,1087.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -226,26 +226,27 @@
                           <av:PointCollection x:Key="ConnectorLocation">410,625.5 410,655.5 420,655.5 420,694.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[GT_HEAD]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="507.2,1444.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[GT_HEAD]" DisplayName="依BPM請款單號LOOP" sap:VirtualizedContainerService.HintSize="408.8,1700.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="WA_HEAD" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="473.6,1324.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,1580.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="sd:DataTable" Name="lt_item" />
                                 <Variable x:TypeArguments="x:Int32" Name="SWITCH_FLAG" />
                                 <Variable x:TypeArguments="sd:DataTable" Name="LV_HEAD" />
                                 <Variable x:TypeArguments="sd:DataTable" Name="LT_GL" />
                                 <Variable x:TypeArguments="sd:DataTable" Name="LT_OTHERS" />
+                                <Variable x:TypeArguments="x:String" Name="GUI_FLAG" />
                               </Sequence.Variables>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:MultipleAssign sap2010:Annotation.AnnotationText="表頭(過帳碼31)&#xA;總帳快速輸入項目(不含稅)&#xA;其他項目" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="432,221.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                              <ui:MultipleAssign sap2010:Annotation.AnnotationText="LV_HEAD 表頭(以過帳碼31的項次欄位值當表頭)&#xA;LT_GL 總帳快速輸入項目(不含稅)&#xA;LT_OTHERS其他項目&#xD;&#xA;LV_BKTXT 目前執行的BPM單號" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,170.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                                 <ui:MultipleAssign.AssignOperations>
                                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -272,26 +273,68 @@
                                         <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[GT_DATA.Select(" [NEWBS] &lt;&gt; '31' AND [BKTXT] = '"+WA_HEAD(0).ToString+"' and ( [KOSTL] = ''  OR [KOSTL] IS NULL )"  ).CopyToDataTable]</InArgument>
                                       </ui:AssignOperation.Value>
                                     </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[LV_BKTXT]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">[WA_HEAD(0).ToString]</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
                                   </scg:List>
                                 </ui:MultipleAssign.AssignOperations>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:MultipleAssign>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke INPUT_HEAD_DATA workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="INPUT_HEAD_DATA.xaml">
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="輸入表頭及過帳碼31的項次" DisplayName="Invoke INPUT_HEAD_DATA workflow" sap:VirtualizedContainerService.HintSize="333.6,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="INPUT_HEAD_DATA.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">[lv_head]</InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
                               </ui:InvokeWorkflowFile>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke INPUT_OTHERS_DATA workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="INPUT_OTHERS_DATA.xaml">
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="輸入其餘項次" DisplayName="Invoke INPUT_OTHERS_DATA workflow" sap:VirtualizedContainerService.HintSize="333.6,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="INPUT_OTHERS_DATA.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InArgument x:TypeArguments="sd:DataTable" x:Key="LT_OTHERS">[LT_OTHERS]</InArgument>
                                   <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">[LV_HEAD]</InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
                               </ui:InvokeWorkflowFile>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GUI_INVNO workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="GUI_INVNO.xaml">
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="過帳碼40的總帳快速輸入項目(不含稅)" DisplayName="Invoke INPUT_GL_DATA workflow" sap:VirtualizedContainerService.HintSize="333.6,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="INPUT_GL_DATA.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">
+                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="LV_HEAD" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="LT_GL">
+                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="LT_GL" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="LV_BKTXT" />
+                                  </InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InvokeWorkflowFile>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="輸入GUI號碼" DisplayName="Invoke GUI_INVNO workflow" sap:VirtualizedContainerService.HintSize="333.6,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="GUI_INVNO.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InOutArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">
                                     <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="LV_BKTXT" />
@@ -299,205 +342,239 @@
                                   <InArgument x:TypeArguments="sd:DataTable" x:Key="LT_GL">
                                     <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="LT_GL" />
                                   </InArgument>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="GUI_FLAG">
+                                    <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="GUI_FLAG" />
+                                  </InOutArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
                               </ui:InvokeWorkflowFile>
-                              <Assign sap:VirtualizedContainerService.HintSize="432,60" sap2010:WorkflowViewState.IdRef="Assign_1">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="sd:DataTable">[lt_item]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[GT_DATA.Select("[BKTXT] = '"+WA_HEAD(0).ToString+"' "  ).CopyToDataTable]</InArgument>
-                                </Assign.Value>
-                              </Assign>
-                              <Sequence DisplayName="COUNT_SWITCH_FLAG" sap:VirtualizedContainerService.HintSize="432,67.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                                <Sequence.Variables>
-                                  <Variable x:TypeArguments="sd:DataTable" Name="LV_TEMP" />
-                                  <Variable x:TypeArguments="sd:DataTable" Name="LV_GUI_IND" />
-                                </Sequence.Variables>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="儲存及讀取狀態訊息" DisplayName="Invoke READ_STATUS workflow" sap:VirtualizedContainerService.HintSize="333.6,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="READ_STATUS.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="GV_BELNR">
+                                    <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="GV_BELNR" />
+                                  </InOutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="GUI_FLAG">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="GUI_FLAG" />
+                                  </InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InvokeWorkflowFile>
+                              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="333.6,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                <ui:CommentOut.Body>
+                                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304.8,352" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="sd:DataTable">[lt_item]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[GT_DATA.Select("[BKTXT] = '"+WA_HEAD(0).ToString+"' "  ).CopyToDataTable]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Sequence DisplayName="COUNT_SWITCH_FLAG" sap:VirtualizedContainerService.HintSize="263.2,67.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                                      <Sequence.Variables>
+                                        <Variable x:TypeArguments="sd:DataTable" Name="LV_TEMP" />
+                                        <Variable x:TypeArguments="sd:DataTable" Name="LV_GUI_IND" />
+                                      </Sequence.Variables>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:FilterDataTable DataTable="[lt_item]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="450.4,160.8" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[LV_TEMP]" SelectColumnsMode="Keep">
+                                        <ui:FilterDataTable.Filters>
+                                          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                            <ui:FilterOperationArgument BooleanOperator="And" Operator="NOTEQ">
+                                              <ui:FilterOperationArgument.Column>
+                                                <InArgument x:TypeArguments="x:String">["NEWUM"]</InArgument>
+                                              </ui:FilterOperationArgument.Column>
+                                              <ui:FilterOperationArgument.Operand>
+                                                <InArgument x:TypeArguments="x:String">["T"]</InArgument>
+                                              </ui:FilterOperationArgument.Operand>
+                                            </ui:FilterOperationArgument>
+                                            <ui:FilterOperationArgument BooleanOperator="And" Operator="NOTEQ">
+                                              <ui:FilterOperationArgument.Column>
+                                                <InArgument x:TypeArguments="x:String">["NEWBS"]</InArgument>
+                                              </ui:FilterOperationArgument.Column>
+                                              <ui:FilterOperationArgument.Operand>
+                                                <InArgument x:TypeArguments="x:String">["29"]</InArgument>
+                                              </ui:FilterOperationArgument.Operand>
+                                            </ui:FilterOperationArgument>
+                                          </scg:List>
+                                        </ui:FilterDataTable.Filters>
+                                        <ui:FilterDataTable.SelectColumns>
+                                          <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                            <x:Null />
+                                          </scg:List>
+                                        </ui:FilterDataTable.SelectColumns>
+                                      </ui:FilterDataTable>
+                                      <ui:FilterDataTable DataTable="[lt_item]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="450.4,160.8" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[LV_GUI_IND]" SelectColumnsMode="Keep">
+                                        <ui:FilterDataTable.Filters>
+                                          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                            <ui:FilterOperationArgument BooleanOperator="And" Operator="NOTEQ">
+                                              <ui:FilterOperationArgument.Column>
+                                                <InArgument x:TypeArguments="x:String">["NEWBS"]</InArgument>
+                                              </ui:FilterOperationArgument.Column>
+                                              <ui:FilterOperationArgument.Operand>
+                                                <InArgument x:TypeArguments="x:String">["40"]</InArgument>
+                                              </ui:FilterOperationArgument.Operand>
+                                            </ui:FilterOperationArgument>
+                                          </scg:List>
+                                        </ui:FilterDataTable.Filters>
+                                        <ui:FilterDataTable.SelectColumns>
+                                          <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                            <x:Null />
+                                          </scg:List>
+                                        </ui:FilterDataTable.SelectColumns>
+                                      </ui:FilterDataTable>
+                                      <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="450.4,882.4" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+                                        <ui:IfElseIf.ConditionBlocks>
+                                          <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                                            <ui:IfElseIfBlock BlockType="If" Condition="[LT_ITEM.ROWS(0).Item(&quot;NEWBS&quot;).ToString = &quot;29&quot;  AND LT_ITEM.ROWS(0).Item(&quot;NEWUM&quot;).ToString = &quot;A&quot;]">
+                                              <ui:IfElseIfBlock.Then>
+                                                <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Int32">[SWITCH_FLAG]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Int32">4</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                              </ui:IfElseIfBlock.Then>
+                                            </ui:IfElseIfBlock>
+                                            <ui:IfElseIfBlock BlockType="ElseIf" Condition="[LV_GUI_IND.RowCount &lt;&gt; 0 AND LT_ITEM.ROWS(0).Item(&quot;WAERS&quot;).ToString  = &quot;TWD&quot;]">
+                                              <ui:IfElseIfBlock.Then>
+                                                <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Int32">[SWITCH_FLAG]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                              </ui:IfElseIfBlock.Then>
+                                            </ui:IfElseIfBlock>
+                                            <ui:IfElseIfBlock BlockType="ElseIf" Condition="[LV_TEMP.RowCount &gt;0]">
+                                              <ui:IfElseIfBlock.Then>
+                                                <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Int32">[SWITCH_FLAG]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Int32">3</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                              </ui:IfElseIfBlock.Then>
+                                            </ui:IfElseIfBlock>
+                                            <ui:IfElseIfBlock BlockType="ElseIf" Condition="[LT_ITEM.ROWS(0).Item(&quot;WAERS&quot;).ToString &lt;&gt; &quot;TWD&quot; And LT_ITEM.ROWS(0).Item(&quot;NEWUM&quot;).ToString &lt;&gt; &quot;T&quot; And LT_ITEM.RowCount = 2]">
+                                              <ui:IfElseIfBlock.Then>
+                                                <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Int32">[SWITCH_FLAG]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Int32">2</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                              </ui:IfElseIfBlock.Then>
+                                            </ui:IfElseIfBlock>
+                                            <ui:IfElseIfBlock BlockType="Else">
+                                              <ui:IfElseIfBlock.Then>
+                                                <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Int32">[SWITCH_FLAG]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                              </ui:IfElseIfBlock.Then>
+                                            </ui:IfElseIfBlock>
+                                          </sc:BindingList>
+                                        </ui:IfElseIf.ConditionBlocks>
+                                      </ui:IfElseIf>
+                                    </Sequence>
+                                    <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[SWITCH_FLAG]" sap:VirtualizedContainerService.HintSize="263.2,52" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Sequence x:Key="1" DisplayName="F-43(with GUI)" sap:VirtualizedContainerService.HintSize="375.2,358.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke F-43(有GUI) workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="F-43(有GUI).xaml">
+                                          <ui:InvokeWorkflowFile.Arguments>
+                                            <InOutArgument x:TypeArguments="x:String" x:Key="GV_BELNR">[GV_BELNR]</InOutArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">[LV_BKTXT]</InArgument>
+                                            <InArgument x:TypeArguments="sd:DataTable" x:Key="GT_DATA">[GT_DATA]</InArgument>
+                                          </ui:InvokeWorkflowFile.Arguments>
+                                        </ui:InvokeWorkflowFile>
+                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UPDATE_DB(ZBPM_GUI) workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="UPDATE_DB(ZBPM_GUI).xaml">
+                                          <ui:InvokeWorkflowFile.Arguments>
+                                            <InArgument x:TypeArguments="x:String" x:Key="DATA_SOURCE">[DATA_SOURCE]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="DB_NAME">[DB_NAME]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="password_db">[Password_DB]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="User_ID">[User_ID]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">[LV_BKTXT]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="GV_BELNR">[GV_BELNR]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="TABLE_NAME">[TABLE_NAME]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="CLIENT">[CLIENT]</InArgument>
+                                          </ui:InvokeWorkflowFile.Arguments>
+                                        </ui:InvokeWorkflowFile>
+                                      </Sequence>
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="2" DisplayName="Invoke F-43(無GUI) workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="F-43(無GUI).xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InOutArgument x:TypeArguments="x:String" x:Key="GV_BELNR">[GV_BELNR]</InOutArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">[LV_BKTXT]</InArgument>
+                                          <InArgument x:TypeArguments="sd:DataTable" x:Key="GT_DATA">[GT_DATA]</InArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
+                                      </ui:InvokeWorkflowFile>
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="3" DisplayName="Invoke F-43(暫存) workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="F-43(暫存).xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InOutArgument x:TypeArguments="x:String" x:Key="GV_BELNR">[GV_BELNR]</InOutArgument>
+                                          <InArgument x:TypeArguments="sd:DataTable" x:Key="GT_DATA">[GT_DATA]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">[LV_BKTXT]</InArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
+                                      </ui:InvokeWorkflowFile>
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="4" DisplayName="Invoke F-47(單邊分錄) workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="F-47(單邊分錄).xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InOutArgument x:TypeArguments="x:String" x:Key="GV_BELNR">[GV_BELNR]</InOutArgument>
+                                          <InArgument x:TypeArguments="sd:DataTable" x:Key="GT_DATA">[GT_DATA]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">[LV_BKTXT]</InArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
+                                      </ui:InvokeWorkflowFile>
+                                      <WriteLine x:Key="0" sap:VirtualizedContainerService.HintSize="230.4,61.6" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[LV_BKTXT+&quot;找不到符合執行條件的Process&quot;]" />
+                                    </Switch>
+                                  </Sequence>
+                                </ui:CommentOut.Body>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:FilterDataTable DataTable="[lt_item]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="450.4,160.8" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[LV_TEMP]" SelectColumnsMode="Keep">
-                                  <ui:FilterDataTable.Filters>
-                                    <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                                      <ui:FilterOperationArgument BooleanOperator="And" Operator="NOTEQ">
-                                        <ui:FilterOperationArgument.Column>
-                                          <InArgument x:TypeArguments="x:String">["NEWUM"]</InArgument>
-                                        </ui:FilterOperationArgument.Column>
-                                        <ui:FilterOperationArgument.Operand>
-                                          <InArgument x:TypeArguments="x:String">["T"]</InArgument>
-                                        </ui:FilterOperationArgument.Operand>
-                                      </ui:FilterOperationArgument>
-                                      <ui:FilterOperationArgument BooleanOperator="And" Operator="NOTEQ">
-                                        <ui:FilterOperationArgument.Column>
-                                          <InArgument x:TypeArguments="x:String">["NEWBS"]</InArgument>
-                                        </ui:FilterOperationArgument.Column>
-                                        <ui:FilterOperationArgument.Operand>
-                                          <InArgument x:TypeArguments="x:String">["29"]</InArgument>
-                                        </ui:FilterOperationArgument.Operand>
-                                      </ui:FilterOperationArgument>
-                                    </scg:List>
-                                  </ui:FilterDataTable.Filters>
-                                  <ui:FilterDataTable.SelectColumns>
-                                    <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                      <x:Null />
-                                    </scg:List>
-                                  </ui:FilterDataTable.SelectColumns>
-                                </ui:FilterDataTable>
-                                <ui:FilterDataTable DataTable="[lt_item]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="450.4,160.8" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[LV_GUI_IND]" SelectColumnsMode="Keep">
-                                  <ui:FilterDataTable.Filters>
-                                    <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                                      <ui:FilterOperationArgument BooleanOperator="And" Operator="NOTEQ">
-                                        <ui:FilterOperationArgument.Column>
-                                          <InArgument x:TypeArguments="x:String">["NEWBS"]</InArgument>
-                                        </ui:FilterOperationArgument.Column>
-                                        <ui:FilterOperationArgument.Operand>
-                                          <InArgument x:TypeArguments="x:String">["40"]</InArgument>
-                                        </ui:FilterOperationArgument.Operand>
-                                      </ui:FilterOperationArgument>
-                                    </scg:List>
-                                  </ui:FilterDataTable.Filters>
-                                  <ui:FilterDataTable.SelectColumns>
-                                    <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                      <x:Null />
-                                    </scg:List>
-                                  </ui:FilterDataTable.SelectColumns>
-                                </ui:FilterDataTable>
-                                <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="450.4,882.4" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
-                                  <ui:IfElseIf.ConditionBlocks>
-                                    <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-                                      <ui:IfElseIfBlock BlockType="If" Condition="[LT_ITEM.ROWS(0).Item(&quot;NEWBS&quot;).ToString = &quot;29&quot;  AND LT_ITEM.ROWS(0).Item(&quot;NEWUM&quot;).ToString = &quot;A&quot;]">
-                                        <ui:IfElseIfBlock.Then>
-                                          <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-                                            <Assign.To>
-                                              <OutArgument x:TypeArguments="x:Int32">[SWITCH_FLAG]</OutArgument>
-                                            </Assign.To>
-                                            <Assign.Value>
-                                              <InArgument x:TypeArguments="x:Int32">4</InArgument>
-                                            </Assign.Value>
-                                          </Assign>
-                                        </ui:IfElseIfBlock.Then>
-                                      </ui:IfElseIfBlock>
-                                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[LV_GUI_IND.RowCount &lt;&gt; 0 AND LT_ITEM.ROWS(0).Item(&quot;WAERS&quot;).ToString  = &quot;TWD&quot;]">
-                                        <ui:IfElseIfBlock.Then>
-                                          <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-                                            <Assign.To>
-                                              <OutArgument x:TypeArguments="x:Int32">[SWITCH_FLAG]</OutArgument>
-                                            </Assign.To>
-                                            <Assign.Value>
-                                              <InArgument x:TypeArguments="x:Int32">1</InArgument>
-                                            </Assign.Value>
-                                          </Assign>
-                                        </ui:IfElseIfBlock.Then>
-                                      </ui:IfElseIfBlock>
-                                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[LV_TEMP.RowCount &gt;0]">
-                                        <ui:IfElseIfBlock.Then>
-                                          <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_4">
-                                            <Assign.To>
-                                              <OutArgument x:TypeArguments="x:Int32">[SWITCH_FLAG]</OutArgument>
-                                            </Assign.To>
-                                            <Assign.Value>
-                                              <InArgument x:TypeArguments="x:Int32">3</InArgument>
-                                            </Assign.Value>
-                                          </Assign>
-                                        </ui:IfElseIfBlock.Then>
-                                      </ui:IfElseIfBlock>
-                                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[LT_ITEM.ROWS(0).Item(&quot;WAERS&quot;).ToString &lt;&gt; &quot;TWD&quot; And LT_ITEM.ROWS(0).Item(&quot;NEWUM&quot;).ToString &lt;&gt; &quot;T&quot; And LT_ITEM.RowCount = 2]">
-                                        <ui:IfElseIfBlock.Then>
-                                          <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_5">
-                                            <Assign.To>
-                                              <OutArgument x:TypeArguments="x:Int32">[SWITCH_FLAG]</OutArgument>
-                                            </Assign.To>
-                                            <Assign.Value>
-                                              <InArgument x:TypeArguments="x:Int32">2</InArgument>
-                                            </Assign.Value>
-                                          </Assign>
-                                        </ui:IfElseIfBlock.Then>
-                                      </ui:IfElseIfBlock>
-                                      <ui:IfElseIfBlock BlockType="Else">
-                                        <ui:IfElseIfBlock.Then>
-                                          <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_7">
-                                            <Assign.To>
-                                              <OutArgument x:TypeArguments="x:Int32">[SWITCH_FLAG]</OutArgument>
-                                            </Assign.To>
-                                            <Assign.Value>
-                                              <InArgument x:TypeArguments="x:Int32">0</InArgument>
-                                            </Assign.Value>
-                                          </Assign>
-                                        </ui:IfElseIfBlock.Then>
-                                      </ui:IfElseIfBlock>
-                                    </sc:BindingList>
-                                  </ui:IfElseIf.ConditionBlocks>
-                                </ui:IfElseIf>
-                              </Sequence>
-                              <Assign sap:VirtualizedContainerService.HintSize="432,60" sap2010:WorkflowViewState.IdRef="Assign_6">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:String">[LV_BKTXT]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">[WA_HEAD(0).ToString]</InArgument>
-                                </Assign.Value>
-                              </Assign>
-                              <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[SWITCH_FLAG]" sap:VirtualizedContainerService.HintSize="432,52" sap2010:WorkflowViewState.IdRef="Switch`1_1">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <Sequence x:Key="1" DisplayName="F-43(with GUI)" sap:VirtualizedContainerService.HintSize="375.2,358.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke F-43(有GUI) workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="F-43(有GUI).xaml">
-                                    <ui:InvokeWorkflowFile.Arguments>
-                                      <InOutArgument x:TypeArguments="x:String" x:Key="GV_BELNR">[GV_BELNR]</InOutArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">[LV_BKTXT]</InArgument>
-                                      <InArgument x:TypeArguments="sd:DataTable" x:Key="GT_DATA">[GT_DATA]</InArgument>
-                                    </ui:InvokeWorkflowFile.Arguments>
-                                  </ui:InvokeWorkflowFile>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UPDATE_DB(ZBPM_GUI) workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="UPDATE_DB(ZBPM_GUI).xaml">
-                                    <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="DATA_SOURCE">[DATA_SOURCE]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="DB_NAME">[DB_NAME]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="password_db">[Password_DB]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="User_ID">[User_ID]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">[LV_BKTXT]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="GV_BELNR">[GV_BELNR]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="TABLE_NAME">[TABLE_NAME]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="CLIENT">[CLIENT]</InArgument>
-                                    </ui:InvokeWorkflowFile.Arguments>
-                                  </ui:InvokeWorkflowFile>
-                                </Sequence>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="2" DisplayName="Invoke F-43(無GUI) workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="F-43(無GUI).xaml">
-                                  <ui:InvokeWorkflowFile.Arguments>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="GV_BELNR">[GV_BELNR]</InOutArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">[LV_BKTXT]</InArgument>
-                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="GT_DATA">[GT_DATA]</InArgument>
-                                  </ui:InvokeWorkflowFile.Arguments>
-                                </ui:InvokeWorkflowFile>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="3" DisplayName="Invoke F-43(暫存) workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="F-43(暫存).xaml">
-                                  <ui:InvokeWorkflowFile.Arguments>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="GV_BELNR">[GV_BELNR]</InOutArgument>
-                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="GT_DATA">[GT_DATA]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">[LV_BKTXT]</InArgument>
-                                  </ui:InvokeWorkflowFile.Arguments>
-                                </ui:InvokeWorkflowFile>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="4" DisplayName="Invoke F-47(單邊分錄) workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="F-47(單邊分錄).xaml">
-                                  <ui:InvokeWorkflowFile.Arguments>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="GV_BELNR">[GV_BELNR]</InOutArgument>
-                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="GT_DATA">[GT_DATA]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">[LV_BKTXT]</InArgument>
-                                  </ui:InvokeWorkflowFile.Arguments>
-                                </ui:InvokeWorkflowFile>
-                                <WriteLine x:Key="0" sap:VirtualizedContainerService.HintSize="230.4,61.6" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[LV_BKTXT+&quot;找不到符合執行條件的Process&quot;]" />
-                              </Switch>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UPDATE_DB workflow" sap:VirtualizedContainerService.HintSize="432,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="UPDATE_DB.xaml">
+                              </ui:CommentOut>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UPDATE_DB workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="UPDATE_DB.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InArgument x:TypeArguments="x:String" x:Key="DATA_SOURCE">[DATA_SOURCE]</InArgument>
                                   <InArgument x:TypeArguments="x:String" x:Key="DB_NAME">[DB_NAME]</InArgument>
@@ -507,6 +584,34 @@
                                   <InArgument x:TypeArguments="x:String" x:Key="GV_BELNR">[GV_BELNR]</InArgument>
                                   <InArgument x:TypeArguments="x:String" x:Key="TABLE_NAME">[TABLE_NAME]</InArgument>
                                   <InArgument x:TypeArguments="x:String" x:Key="CLIENT">[CLIENT]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UPDATE_DB(ZBPM_GUI) workflow" sap:VirtualizedContainerService.HintSize="333.6,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" UnSafe="False" WorkflowFileName="UPDATE_DB(ZBPM_GUI).xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="DATA_SOURCE">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DATA_SOURCE" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="DB_NAME">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DB_NAME" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="password_db">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Password_DB" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="User_ID">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="User_ID" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="LV_BKTXT">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="LV_BKTXT" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="GV_BELNR">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="GV_BELNR" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="TABLE_NAME">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TABLE_NAME" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="CLIENT">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CLIENT" />
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>
