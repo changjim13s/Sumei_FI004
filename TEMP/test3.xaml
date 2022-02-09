@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="test3" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="814.4,611.2" sap2010:WorkflowViewState.IdRef="test3_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="test3" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="685.6,611.2" sap2010:WorkflowViewState.IdRef="test3_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
@@ -67,7 +67,7 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="test3" sap:VirtualizedContainerService.HintSize="375.2,472.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="test3" sap:VirtualizedContainerService.HintSize="375.2,228" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="msg_typ" />
       <Variable x:TypeArguments="x:String" Name="msg_text" />
@@ -75,36 +75,24 @@
       <Variable x:TypeArguments="x:String" Name="err_info" />
       <Variable x:TypeArguments="x:String" Name="err_TYPE" />
       <Variable x:TypeArguments="x:String" Name="err_ITEM" />
+      <Variable x:TypeArguments="ui:UiElement" Name="lv_find" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Action Get Text 'ITEM'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="GetValue_2">
-      <ui:GetValue.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a328adf4-90e7-4b50-9706-91c791b7d3f4" InformativeScreenshot="5cc87952c4082336e34b90eaf221c727" Selector="&lt;wnd app='saplogon.exe' cls='#32770' title='*' idx='*' /&gt;&lt;sap id='usr/tblSAPLZACCG_TWGUI_VGL01FG61CTRL100' tableCol='1' tableRow='0' /&gt;" TimeoutMS="2000">
+    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into 'CTextField  過帳碼'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="twd">
+      <ui:TypeInto.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1ab05889-f2ed-40ce-ba3d-07eec4b1954a" InformativeScreenshot="907f90d2e680b1fed63b93ac4715aa0e" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='Create Price Condition (ZPR0) : Fast Entry' /&gt;&lt;sap id='usr/tblSAPMV13ATCTRL_FAST_ENTRY' tableCol='1' tableRow='1' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
           <ui:Target.WaitForReady>
             <InArgument x:TypeArguments="ui:WaitForReady" />
           </ui:Target.WaitForReady>
         </ui:Target>
-      </ui:GetValue.Target>
-      <ui:GetValue.Value>
-        <OutArgument x:TypeArguments="x:String">[err_ITEM]</OutArgument>
-      </ui:GetValue.Value>
-    </ui:GetValue>
-    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Action Get Text 'ERROR'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="GetValue_1">
-      <ui:GetValue.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a328adf4-90e7-4b50-9706-91c791b7d3f4" InformativeScreenshot="5cc87952c4082336e34b90eaf221c727" Selector="&lt;wnd app='saplogon.exe' cls='#32770' title='*' idx='*' /&gt;&lt;sap id='usr/tblSAPLZACCG_TWGUI_VGL01FG61CTRL100' tableCol='26' tableRow='0' /&gt;" TimeoutMS="2000">
-          <ui:Target.WaitForReady>
-            <InArgument x:TypeArguments="ui:WaitForReady" />
-          </ui:Target.WaitForReady>
-        </ui:Target>
-      </ui:GetValue.Target>
-      <ui:GetValue.Value>
-        <OutArgument x:TypeArguments="x:String">[err_info]</OutArgument>
-      </ui:GetValue.Value>
-    </ui:GetValue>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;ITEM&quot;+err_ITEM+&quot;:&quot;+err_info]" />
+      </ui:TypeInto.Target>
+    </ui:TypeInto>
   </Sequence>
 </Activity>
