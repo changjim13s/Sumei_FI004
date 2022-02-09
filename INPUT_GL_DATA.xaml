@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1070,3115</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1083,3115</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>INPUT_GL_DATA_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -245,7 +245,7 @@
                   </ui:TypeInto>
                   <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="科目" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" SendWindowMessages="False" SimulateType="True" Text="[WA_GL.Item(&quot;NEWKO&quot;).ToString]">
                     <ui:TypeInto.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="862a9683-3a2e-4a55-8b9f-3ea8aba4536c" InformativeScreenshot="1a7035de5b65a4d9d52932bbb8a7a147" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/sub/1/ctxt[&quot;+WA_IND .ToString+&quot;,3]' /&gt;&quot;]" TimeoutMS="1000">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="862a9683-3a2e-4a55-8b9f-3ea8aba4536c" InformativeScreenshot="1a7035de5b65a4d9d52932bbb8a7a147" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;&lt;sap id='usr/sub/1/ctxt[&quot;+WA_IND .ToString+&quot;,3]' /&gt;&quot;]" TimeoutMS="1000">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
@@ -254,7 +254,7 @@
                   </ui:TypeInto>
                   <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="金額" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_3" SendWindowMessages="False" SimulateType="True" Text="[WA_GL.Item(&quot;WRBTR&quot;).ToString]">
                     <ui:TypeInto.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a8f7aba6-a007-4477-b2aa-9ab25e2e4bdb" InformativeScreenshot="9787e7dbaf308028646987fddd5c639d" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/sub/1/txt[&quot;+WA_IND .ToString+&quot;,12]' /&gt;&quot;]" TimeoutMS="1000">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a8f7aba6-a007-4477-b2aa-9ab25e2e4bdb" InformativeScreenshot="9787e7dbaf308028646987fddd5c639d" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;&lt;sap id='usr/sub/1/txt[&quot;+WA_IND .ToString+&quot;,12]' /&gt;&quot;]" TimeoutMS="1000">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
@@ -263,7 +263,7 @@
                   </ui:TypeInto>
                   <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="成本中心" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_5" SendWindowMessages="False" SimulateType="True" Text="[WA_GL.Item(&quot;KOSTL&quot;).ToString]">
                     <ui:TypeInto.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="16ae181c-beff-4a0d-afb8-fe6f173bfbb1" InformativeScreenshot="782fe9eee7498a7e2534f52e14e3a1ac" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/sub/1/ctxt[&quot;+WA_IND .ToString+&quot;,23]' /&gt;&quot;]" TimeoutMS="1000">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="16ae181c-beff-4a0d-afb8-fe6f173bfbb1" InformativeScreenshot="782fe9eee7498a7e2534f52e14e3a1ac" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;&lt;sap id='usr/sub/1/ctxt[&quot;+WA_IND .ToString+&quot;,23]' /&gt;&quot;]" TimeoutMS="1000">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
@@ -272,7 +272,7 @@
                   </ui:TypeInto>
                   <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="稅碼" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_4" SendWindowMessages="False" SimulateType="True" Text="[WA_GL.Item(&quot;MWSKZ&quot;).ToString]">
                     <ui:TypeInto.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa5f1ff2-1407-4468-9144-26031585ab1e" InformativeScreenshot="a2b7f0567b3d8fc6dbf6710a4ff74107" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/sub/1/ctxt[&quot;+WA_IND .ToString+&quot;,34]' /&gt;&quot;]" TimeoutMS="1000">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa5f1ff2-1407-4468-9144-26031585ab1e" InformativeScreenshot="a2b7f0567b3d8fc6dbf6710a4ff74107" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;&lt;sap id='usr/sub/1/ctxt[&quot;+WA_IND .ToString+&quot;,34]' /&gt;&quot;]" TimeoutMS="1000">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
@@ -307,7 +307,7 @@
                   </ui:CommentOut>
                   <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="指派" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_7" SendWindowMessages="False" SimulateType="True" Text="[WA_GL.Item(&quot;XBLNR&quot;).ToString]">
                     <ui:TypeInto.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b0972a51-970a-47f5-8530-b044235ef5e7" InformativeScreenshot="e1c8bf8ee932bebaf9bf61c111a307ba" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/sub/1/txt[&quot;+WA_IND .ToString+&quot;,37]' /&gt;&quot;]" TimeoutMS="1000">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b0972a51-970a-47f5-8530-b044235ef5e7" InformativeScreenshot="e1c8bf8ee932bebaf9bf61c111a307ba" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;&lt;sap id='usr/sub/1/txt[&quot;+WA_IND .ToString+&quot;,37]' /&gt;&quot;]" TimeoutMS="1000">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
@@ -316,7 +316,7 @@
                   </ui:TypeInto>
                   <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="內文" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_8" SendWindowMessages="False" SimulateType="True" Text="[WA_GL.Item(&quot;SGTXT&quot;).ToString]">
                     <ui:TypeInto.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="63db7cf2-802b-4b8c-8e2f-a406627d39b7" InformativeScreenshot="7221657886cfddd44cf0143c6edb6fd2" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='輸入 BPM費用請款-外掛(SM): 新增 總帳科目項目' /&gt;&lt;sap id='usr/sub/1/ctxt[&quot;+WA_IND.ToString+&quot;,52]' /&gt;&quot;]" TimeoutMS="1000">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="63db7cf2-802b-4b8c-8e2f-a406627d39b7" InformativeScreenshot="7221657886cfddd44cf0143c6edb6fd2" Selector="[&quot;&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;&lt;sap id='usr/sub/1/ctxt[&quot;+WA_IND.ToString+&quot;,52]' /&gt;&quot;]" TimeoutMS="1000">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
