@@ -145,16 +145,8 @@
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="839,4352" sap2010:WorkflowViewState.IdRef="Sequence_16">
           <Sequence.Variables>
-            <Variable x:TypeArguments="x:Int32" Name="ind_wa">
-              <Variable.Default>
-                <Literal x:TypeArguments="x:Int32" />
-              </Variable.Default>
-            </Variable>
-            <Variable x:TypeArguments="x:Int32" Name="LV_IND">
-              <Variable.Default>
-                <Literal x:TypeArguments="x:Int32" />
-              </Variable.Default>
-            </Variable>
+            <Variable x:TypeArguments="x:Int32" Default="0" Name="ind_wa" />
+            <Variable x:TypeArguments="x:Int32" Default="0" Name="LV_IND" />
             <Variable x:TypeArguments="sd:DataTable" Name="GUI_ERR_TAB" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
@@ -311,7 +303,7 @@
                   </ui:TypeInto>
                   <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                     <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="417,484" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="418,482" sap2010:WorkflowViewState.IdRef="Sequence_22">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -516,7 +508,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;BPM單號:&quot;+LV_BKTXT+Environment.NewLine+&quot;錯誤訊息:&quot;+err_info]" />
-                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,84" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;GUI無法儲存&quot;+Environment.NewLine+&quot;BPM單號:  &quot;+LV_BKTXT+Environment.NewLine+&quot;錯誤訊息:  &quot;+err_info]" />
+                <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="GUI發票無法儲存" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,84" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;BPM單號：&quot;+LV_BKTXT+Environment.NewLine+&quot;錯誤訊息：&quot;+err_info]" />
                 <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="離開" sap:VirtualizedContainerService.HintSize="334,152" sap2010:WorkflowViewState.IdRef="SendHotkey_10" Key="f12" KeyModifiers="None" SendWindowMessages="True" SpecialKey="True">
                   <ui:SendHotkey.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="be4694af-3e67-47fe-81da-36ee5364c3b5" InformativeScreenshot="5a3afe21012c95f5401b265f20b29e2a" Selector="&lt;wnd app='saplogon.exe' cls='#32770' title='*' idx='*' /&gt;" TimeoutMS="2000">
