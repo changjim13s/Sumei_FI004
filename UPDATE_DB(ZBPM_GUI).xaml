@@ -9,11 +9,12 @@
     <x:Property Name="TABLE_NAME" Type="InArgument(x:String)" />
     <x:Property Name="CLIENT" Type="InArgument(x:String)" />
     <x:Property Name="GUI_FLAG" Type="InArgument(x:String)" />
+    <x:Property Name="GUI_ERR" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1070,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>915,677</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UPDATE_DB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -79,7 +80,6 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="UPDATE_DB" sap:VirtualizedContainerService.HintSize="526,612" sap2010:WorkflowViewState.IdRef="Sequence_1">
