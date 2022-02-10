@@ -123,7 +123,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:DatabaseConnect>
-          <ui:ExecuteQuery ContinueOnError="{x:Null}" CommandType="Text" DataTable="[GT_DATA]" DisplayName="Execute Query" ExistingDbConnection="[dbconn]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;SELECT TOP (100)  * FROM [&quot;+DB_NAME.ToString+&quot;].[dbo].[&quot;+TABLE_NAME.ToString+&quot;]  where MANDT = '&quot;+CLIENT+&quot;' AND (belnr = '2300000082' or belnr is null)&quot;]" TimeoutMS="2000">
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" CommandType="Text" DataTable="[GT_DATA]" DisplayName="Execute Query" ExistingDbConnection="[dbconn]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;SELECT TOP (100)  * FROM [&quot;+DB_NAME.ToString+&quot;].[dbo].[&quot;+TABLE_NAME.ToString+&quot;]  where MANDT = '&quot;+CLIENT+&quot;' AND (belnr = '' or belnr is null)&quot;]" TimeoutMS="2000">
             <ui:ExecuteQuery.Parameters>
               <scg:Dictionary x:TypeArguments="x:String, Argument" />
             </ui:ExecuteQuery.Parameters>
