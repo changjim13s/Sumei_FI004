@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>915,677</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>640,682.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UPDATE_DB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -80,9 +80,10 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UPDATE_DB" sap:VirtualizedContainerService.HintSize="526,612" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UPDATE_DB" sap:VirtualizedContainerService.HintSize="524.8,617.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="[&quot;Data Source=&quot;+DATA_SOURCE+&quot;;Initial Catalog=&quot;+DB_NAME+&quot;;Persist Security Info=True;User ID=&quot;+User_ID+&quot;;Password=&quot;+password_db+&quot;&quot;]" Name="conn_str" />
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbconn" />
@@ -93,15 +94,15 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[LV_BKTXT &lt;&gt; &quot;&quot; AND GV_BELNR &lt;&gt; &quot;&quot;]" sap:VirtualizedContainerService.HintSize="484,520" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[LV_BKTXT &lt;&gt; &quot;&quot; AND GV_BELNR &lt;&gt; &quot;&quot;]" sap:VirtualizedContainerService.HintSize="483.2,524.8" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="375.2,336.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:DatabaseConnect DisplayName="Connect" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="[conn_str]" DatabaseConnection="[dbconn]">
+          <ui:DatabaseConnect DisplayName="Connect" sap:VirtualizedContainerService.HintSize="333.6,52" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="[conn_str]" DatabaseConnection="[dbconn]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -109,12 +110,12 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:DatabaseConnect>
-          <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Non Query" ExistingDbConnection="[dbconn]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[&quot;UPDATE [&quot;+DB_NAME+&quot;].[dbo].[ZBPM_GUI] SET BELNR = '&quot;+GV_BELNR+&quot;'  WHERE MANDT = '&quot;+CLIENT+&quot;' AND BPMPONO = '&quot;+LV_BKTXT+&quot;' ;&quot;]">
+          <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Non Query" ExistingDbConnection="[dbconn]" sap:VirtualizedContainerService.HintSize="333.6,89.6" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[&quot;UPDATE [&quot;+DB_NAME+&quot;].[dbo].[ZBPM_GUI] SET BELNR = '&quot;+GV_BELNR+&quot;' ,ERR_INFO = '&quot;+GUI_ERR+&quot;' WHERE MANDT = '&quot;+CLIENT+&quot;' AND BPMPONO = '&quot;+LV_BKTXT+&quot;' ;&quot;]">
             <ui:ExecuteNonQuery.Parameters>
               <scg:Dictionary x:TypeArguments="x:String, Argument" />
             </ui:ExecuteNonQuery.Parameters>
           </ui:ExecuteNonQuery>
-          <ui:DatabaseDisconnect DatabaseConnection="[dbconn]" DisplayName="Disconnect" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
+          <ui:DatabaseDisconnect DatabaseConnection="[dbconn]" DisplayName="Disconnect" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
         </Sequence>
       </If.Then>
       <If.Else>
