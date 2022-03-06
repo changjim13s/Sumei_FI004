@@ -826,7 +826,7 @@
                                   <av:Size x:Key="ShapeSize">200,52</av:Size>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:03" Caption="結束" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Program is executed&quot;]">
+                              <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:01" Caption="結束" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Program is executed&quot;]" TopMost="False">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
