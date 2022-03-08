@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>814.4,1038.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1071,969</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>EXCEL_LOGON_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -82,7 +82,7 @@
       <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="EXCEL_LOGON" sap:VirtualizedContainerService.HintSize="476.8,973.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="EXCEL_LOGON" sap:VirtualizedContainerService.HintSize="478,904" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="SAP_logon" />
       <Variable x:TypeArguments="x:String" Name="DB_logon" />
@@ -93,8 +93,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetPassword DisplayName="SAP登入密碼" sap:VirtualizedContainerService.HintSize="435.2,22.4" sap2010:WorkflowViewState.IdRef="GetPassword_1" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAiigMFGqzCUu9x8X6LIXJkgAAAAACAAAAAAADZgAAwAAAABAAAABSJoS7Wha6eZp8rj5zs0YXAAAAAASAAACgAAAAEAAAAILy7c1TvL1FipjtSJmOxEIQAAAAWeYUlifcNh9xd9ihe6TjMBQAAABiudeJ7dHkV5T0z0STGCUH21Vy9w==" Result="[SAP_PW]" />
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="SAP登入資訊" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="435.2,257.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="SAP登入資訊" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="436,255" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
@@ -126,7 +125,7 @@
               <OutArgument x:TypeArguments="x:String">[PASSWORD]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[SAP_PW]</InArgument>
+              <InArgument x:TypeArguments="x:String">Az123456</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
@@ -145,7 +144,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="DB連線登入訊息" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="435.2,257.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="DB連線登入訊息" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="436,255" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
@@ -196,9 +195,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,223.2" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,222" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,144.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,144" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
