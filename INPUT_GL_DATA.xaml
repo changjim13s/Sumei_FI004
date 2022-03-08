@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1083,3115</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>831.2,3122.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>INPUT_GL_DATA_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -73,17 +73,16 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="GL總帳快速輸入&#xA;" DisplayName="INPUT_GL_DATA" sap:VirtualizedContainerService.HintSize="846,3050" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="GL總帳快速輸入&#xA;" DisplayName="INPUT_GL_DATA" sap:VirtualizedContainerService.HintSize="841.6,3057.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[LT_GL Is Nothing OrElse LT_GL.Rows.Count = 0]" sap:VirtualizedContainerService.HintSize="804,2916" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[LT_GL Is Nothing OrElse LT_GL.Rows.Count = 0]" sap:VirtualizedContainerService.HintSize="800,2922.4" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -91,10 +90,10 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="233,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="無GL總帳快速輸入資料" />
+        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230.4,61.6" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="無GL總帳快速輸入資料" />
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="526,2758" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence sap:VirtualizedContainerService.HintSize="525.6,2764" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:Int32" Default="0" Name="WA_IND" />
             <Variable x:TypeArguments="x:String" Name="msg_type" />
@@ -107,7 +106,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ucas:ClickToolbarButton ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" AlterIfDisabled="True" DisplayName="點擊「總帳快速輸入」" sap:VirtualizedContainerService.HintSize="484,159" sap2010:WorkflowViewState.IdRef="ClickToolbarButton_1" Item="呼叫快速輸入   (Shift+F8)">
+          <ucas:ClickToolbarButton DelayAfter="{x:Null}" DelayBefore="{x:Null}" AlterIfDisabled="True" ContinueOnError="True" DisplayName="點擊「總帳快速輸入」" sap:VirtualizedContainerService.HintSize="484,160.8" sap2010:WorkflowViewState.IdRef="ClickToolbarButton_1" Item="呼叫快速輸入   (Shift+F8)">
             <ucas:ClickToolbarButton.Items>
               <scg:List x:TypeArguments="x:String" Capacity="16">
                 <x:String xml:space="preserve">顯示文件概觀   (Shift+F2)</x:String>
@@ -135,7 +134,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ucas:ClickToolbarButton>
-          <ucas:ReadStatusbar ContinueOnError="{x:Null}" MessageData="{x:Null}" MessageId="{x:Null}" MessageNumber="{x:Null}" MessageText="{x:Null}" DisplayName="Read Status Bar 'Statusbar  sbar'" sap:VirtualizedContainerService.HintSize="484,265" sap2010:WorkflowViewState.IdRef="ReadStatusbar_2" MessageType="[msg_type]">
+          <ucas:ReadStatusbar ContinueOnError="{x:Null}" MessageData="{x:Null}" MessageId="{x:Null}" MessageNumber="{x:Null}" MessageText="{x:Null}" DisplayName="Read Status Bar 'Statusbar  sbar'" sap:VirtualizedContainerService.HintSize="484,268" sap2010:WorkflowViewState.IdRef="ReadStatusbar_2" MessageType="[msg_type]">
             <ucas:ReadStatusbar.Target>
               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="daaf520a-8924-4dc5-8b00-3e3121972862" InformativeScreenshot="bd746e07a297ee8d9eb3e6c187499d67" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' omit:title='SAP 輕鬆存取' /&gt;&lt;sap id='sbar' /&gt;">
                 <ui:Target.TimeoutMS>

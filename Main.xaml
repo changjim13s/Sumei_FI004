@@ -185,7 +185,7 @@
                       <av:Size x:Key="ShapeSize">200,52</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:01" Caption="結束" DisplayName="無資料" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;環境&quot;+INPUT_SAP_CLIENT+&quot;無符合資料&quot;]" TopMost="False">
+                  <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:02" Caption="結束" DisplayName="無資料" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;環境&quot;+INPUT_SAP_CLIENT+&quot;無符合資料&quot;]" TopMost="False">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -287,7 +287,7 @@
                                   <av:PointCollection x:Key="ConnectorLocation">380,871.6 380,918.4</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:ForEachRow ColumnNames="{x:Null}" sap2010:Annotation.AnnotationText="執行F-43 F-47" CurrentIndex="[ind_head]" DataTable="[GT_HEAD]" DisplayName="依BPM請款單號LOOP" sap:VirtualizedContainerService.HintSize="200,83.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                              <ui:ForEachRow ColumnNames="{x:Null}" sap2010:Annotation.AnnotationText="執行F-43 F-47" CurrentIndex="[ind_head]" DataTable="[GT_HEAD]" DisplayName="依BPM請款單號LOOP" sap:VirtualizedContainerService.HintSize="736,4267.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                                 <ui:ForEachRow.Body>
                                   <ActivityAction x:TypeArguments="sd:DataRow">
                                     <ActivityAction.Argument>
@@ -496,7 +496,7 @@
                                                 <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="輸入其他項目:&#xA;過帳碼40+無特殊總帳 =稅項&#xA;過帳碼29+特殊總帳T =暫付款&#xA;過帳碼29+特殊總帳A =單邊分路 預付款" DisplayName="INPUT_OTHERS_DATA workflow" sap:VirtualizedContainerService.HintSize="200,155.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_37" UnSafe="False" WorkflowFileName="INPUT_OTHERS_DATA.xaml">
+                                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="輸入其他項目:&#xA;過帳碼40+無特殊總帳 =稅項&#xA;過帳碼29+特殊總帳T =暫付款&#xA;過帳碼29+特殊總帳A =單邊分路 預付款" DisplayName="INPUT_OTHERS_DATA workflow" sap:VirtualizedContainerService.HintSize="333.6,185.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_37" UnSafe="False" WorkflowFileName="INPUT_OTHERS_DATA.xaml">
                                               <ui:InvokeWorkflowFile.Arguments>
                                                 <InArgument x:TypeArguments="sd:DataTable" x:Key="LT_OTHERS">[LT_OTHERS]</InArgument>
                                                 <InArgument x:TypeArguments="sd:DataTable" x:Key="LV_HEAD">[LV_HEAD]</InArgument>
@@ -867,7 +867,7 @@
                                           <av:Size x:Key="ShapeSize">200,52</av:Size>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:01" Caption="結束" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Program is executed&quot;]" TopMost="False">
+                                      <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:02" Caption="結束" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Program is executed&quot;]" TopMost="False">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
