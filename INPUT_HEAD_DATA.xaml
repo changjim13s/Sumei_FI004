@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="INPUT_HEAD_DATA" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ucas="clr-namespace:UiPath.Core.Activities.SAP;assembly=UiPath.UiAutomation.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="INPUT_HEAD_DATA" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ucas="clr-namespace:UiPath.Core.Activities.SAP;assembly=UiPath.UiAutomation.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="LV_HEAD" Type="InArgument(sd:DataTable)" />
     <x:Property Name="LT_ONE" Type="InArgument(sd:DataTable)" />
@@ -6,11 +6,16 @@
     <x:Property Name="GT_DATA" Type="InArgument(sd:DataTable)" />
     <x:Property Name="GV_BELNR" Type="InOutArgument(x:String)" />
     <x:Property Name="ONE_FLAG" Type="InOutArgument(x:String)" />
+    <x:Property Name="msg_type" Type="InOutArgument(x:String)" />
+    <x:Property Name="msg_text" Type="InArgument(x:String)" />
   </x:Members>
+  <this:INPUT_HEAD_DATA.msg_text>
+    <InArgument x:TypeArguments="x:String" />
+  </this:INPUT_HEAD_DATA.msg_text>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1441.6,5799.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1441.6,4161.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>INPUT_HEAD_DATA_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -78,15 +83,13 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="INPUT_HEAD_DATA" sap:VirtualizedContainerService.HintSize="1452,5734.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="INPUT_HEAD_DATA" sap:VirtualizedContainerService.HintSize="1452,4096.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="IND_FIND" />
       <Variable x:TypeArguments="x:String" Default="8" Name="ind_msz" />
       <Variable x:TypeArguments="x:String" Default="9" Name="ind_acct" />
       <Variable x:TypeArguments="ui:UiElement" Name="elem_msz" />
       <Variable x:TypeArguments="x:Int32" Name="zid" />
-      <Variable x:TypeArguments="x:String" Name="msg_type" />
-      <Variable x:TypeArguments="x:String" Name="msg_text" />
       <Variable x:TypeArguments="s:String[]" Name="MSG_DATA" />
       <Variable x:TypeArguments="x:String" Default="18" Name="ind_xblnr" />
       <Variable x:TypeArguments="x:String" Default="11" Name="ind_SGTXT" />
@@ -97,7 +100,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[LV_HEAD Is Nothing OrElse LV_HEAD.Rows.Count = 0]" sap:VirtualizedContainerService.HintSize="1410.4,5641.6" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[LV_HEAD Is Nothing OrElse LV_HEAD.Rows.Count = 0]" sap:VirtualizedContainerService.HintSize="1410.4,4004" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="375.2,305.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
@@ -126,13 +129,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="991.2,5483.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
+        <Sequence sap:VirtualizedContainerService.HintSize="991.2,3845.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="F-43" sap:VirtualizedContainerService.HintSize="949.6,5290.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence DisplayName="F-43" sap:VirtualizedContainerService.HintSize="949.6,3652.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -372,15 +375,15 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:TypeInto>
-            <TryCatch DisplayName="enter" sap:VirtualizedContainerService.HintSize="908,1689.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="enter" sap:VirtualizedContainerService.HintSize="539.2,1835.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <TryCatch.Try>
-                <Sequence sap:VirtualizedContainerService.HintSize="502.4,1462.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence sap:VirtualizedContainerService.HintSize="502.4,1608" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -400,7 +403,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:InvokeWorkflowFile>
-                  <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="460.8,1216.8" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+                  <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="460.8,1362.4" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
                     <ui:IfElseIf.ConditionBlocks>
                       <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                         <ui:IfElseIfBlock BlockType="If" Condition="[MSG_TYPE = &quot;S&quot;]">
@@ -468,7 +471,14 @@
                         </ui:IfElseIfBlock>
                         <ui:IfElseIfBlock BlockType="ElseIf" Condition="[MSG_TYPE = &quot;E&quot;]">
                           <ui:IfElseIfBlock.Then>
-                            <Throw Exception="[new SystemException(msg_text)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                            <Sequence sap:VirtualizedContainerService.HintSize="375.2,168" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:02" Caption="錯誤" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,75.2" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[msg_text]" />
+                            </Sequence>
                           </ui:IfElseIfBlock.Then>
                         </ui:IfElseIfBlock>
                       </sc:BindingList>
